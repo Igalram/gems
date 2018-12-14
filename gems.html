@@ -1,0 +1,476 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Pure JS One Page Scroll by Pete R. | The Pete Design</title>
+	<meta name="title" content="Pure JS One Page Scroll by Pete R. | The Pete Design" />
+	<meta name="description" content="Pure JS One Page Scroll is the javascript version (no need for jQuery any more) of the infamous jQuery One Page Scroll. Create an Apple-like one page scroller website (iPhone 5S website) with One Page Scroll plugin" />
+  <link rel="image_src" href="/images/onepage_scroll_image.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta content="http://www.thepetedesign.com/demos/purejs_onepage_scroll_demo.html" property="og:url" />
+	<meta content="http://www.thepetedesign.com/images/onepage_scroll_image.png" property="og:image" />
+	<link rel="shortcut icon" id="favicon" href="favicon.png"> 
+	<meta name="author" content="Pete R.">
+	<link rel="canonical" href="http://www.thepetedesign.com/demos/purejs_onepage_scroll_demo.html" />
+
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Pacifico:400' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="onepagescroll.js"></script>
+  <link href='onepage-scroll.css' rel='stylesheet' type='text/css'>
+  <style>
+    html {
+      height: 100%;
+    }
+    body {
+      background: rgb(53, 53, 54);
+      padding: 0;
+      text-align: center;
+      font-family: 'open sans';
+      position: relative;
+      margin: 0;
+      height: 100%;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .wrapper {
+    	height: 100% !important;
+    	height: 100%;
+    	margin: 0 auto; 
+    	overflow: hidden;
+    }
+    
+    a {
+      text-decoration: none;
+    }
+    
+    
+    h1, h2 {
+      width: 100%;
+      float: left;
+    }
+    h1 {
+      margin-top: 100px;
+      color: rgb(225,213,96);
+      margin-bottom: 5px;rgb
+      font-size: 70px;
+      letter-spacing: -4px;
+      font-weight: 100;
+    }
+    h1 span {
+      font-size: 26px;
+      margin: 0 5px;
+      text-transform: capitalize;
+      background: rgba(0,0,0,0.85);
+      display: inline-block;
+      color: #6D461D;
+      border-radius: 5px 5px;
+      -webkit-border-radius: 5px 5px;
+      -moz-border-radius: 5px 5px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
+      padding: 3px 10px;
+    }
+    h2 {
+      color: white;
+      font-weight: 100;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    
+    .pointer {
+      color: #9b59b6;
+      font-family: 'Pacifico', cursive;
+      font-size: 30px;
+      margin-top: 15px;
+    }
+    code {
+      margin: 20px 1%;
+      float: left;
+      width: 48%;
+      height: 175px;
+      background: rgba(0,0,0,0.1);
+      border: rgba(0,0,0,0.05) 5px solid;
+      border-radius: 5px;
+      padding:5px;
+      color: white;
+      text-align: center;
+      font-size: 15px;
+      margin-top: 25px;
+      display: block;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+    }
+    code p {
+      color: rgb(225,213,96);
+    }
+    code.js {
+      color: #FFAD00;
+    }
+
+    code img {
+      width:80%;
+    }
+
+    .main {
+      float: left;
+      width: 100%;
+      margin: 0 auto;
+    }
+    
+    .main h1 {
+      padding:150px 50px;
+      float: left;
+      width: 100%;
+      font-size: 45px;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      font-weight: 100;
+      margin: 0;
+    }
+   
+    .main h1.demo1 {
+      background: #1ABC9C;
+    }
+    
+    .reload.bell {
+      font-size: 12px;
+      padding: 20px;
+      width: 45px;
+      text-align: center;
+      height: 47px;
+      border-radius: 50px;
+      -webkit-border-radius: 50px;
+      -moz-border-radius: 50px;
+    }
+    
+    .reload.bell #notification {
+      font-size: 25px;
+      line-height: 140%;
+    }
+    
+    .reload, .btn{
+      display: inline-block;
+      border: 4px solid #A2261E;
+      border-radius: 5px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      background: #CC3126;
+      display: inline-block;
+      line-height: 100%;
+      padding: 0.7em;
+      text-decoration: none;
+      color: #fff;
+      width: 100px;
+      line-height: 140%;
+      font-size: 17px;
+      font-family: open sans;
+      font-weight: bold;
+    }
+    .reload:hover{
+      background: #444;
+    }
+    .btn {
+      width: 200px;
+      color: rgb(255, 255, 255);
+      border: 4px solid rgb(0, 0, 0);
+      background: rgba(3, 3, 3, 0.75);
+    }
+    .clear {
+      width: auto;
+    }
+    .btn:hover, .btn:hover {
+      background: #444;
+    }
+    .btns {
+      width: 410px;
+      margin: 50px auto;
+    }
+    .credit {
+      text-align: center;
+      color: white;
+      padding: 10px;
+      width: 410px;
+     
+      opacity: 0.7;
+      clear: both;
+      margin-top: 45px;
+      float: left;
+    }
+    .credit a {
+      color: rgba(0,0,0,0.85);
+      text-decoration: none;
+      font-weight: bold;
+      text-align: center;
+    }
+    
+    .back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      text-align: center;
+      display: block;
+      padding: 7px;
+      width: 100%;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      background: rgba(255, 255, 255, 0.25);
+      font-weight: bold;
+      font-size: 13px;
+      color: #000;
+      -webkit-transition: all 500ms ease-in-out;
+      -moz-transition: all 500ms ease-in-out;
+      -o-transition: all 500ms ease-in-out;
+      transition: all 500ms ease-in-out;
+    }
+    .back:hover {
+      color: black;
+      background: rgba(255, 255, 255, 0.5);
+    }
+    
+    header {
+      position: relative;
+      z-index: 10;
+    }
+    .main section .page_container {
+      position: relative;
+      top: 25%;
+      margin: 0 auto 0;
+      max-width: 950px;
+      z-index: 3;
+    }
+    .main section  {
+      overflow: hidden;
+    }
+    
+    .main section > img {
+      position: absolute;
+      max-width: 100%;
+      z-index: 1;
+    }
+    
+    .main section.page1 {
+      background:rgb(27, 41, 41);
+    }
+    .main section.page1 h1 {
+      float: none;
+      width: 435px;
+      display: block;
+      text-align: center;
+      padding: 0;
+      margin-bottom: 15px;
+      font-size: 44px;
+      
+    }
+    .main section.page1 h2 {
+      font-size: 18px;
+      display: block;
+      text-align: center;
+      width: 435px;
+      line-height: 160%;
+    }
+    .main section .page_container .btns {
+      clear: both;
+      float: left;
+      text-align: center;
+      width: 435px;
+    }
+    .main section .page_container .btns a{
+      text-align: center;
+    }
+    .main section.page2 {
+      background: #555557;
+    }
+
+    section.page2 p {
+      color: rgb(225,213,96);
+      text-align: left;
+    }
+    .main section.page2 > img {
+      position: absolute;
+      top: -300px;
+      left: 50%;
+      margin-left: -1095px;
+    }
+    .main section.page2 .page_container {
+      top: 10%;
+      overflow: hidden;
+    }
+    .main section.page2 h1 {
+      float: none;
+      width: 435px;
+      display: block;
+      text-align: right;
+      padding: 0;
+      margin-bottom: 15px;
+      font-size: 44px;
+    }
+    .main section.page2 h2 {
+      color: rgba(255,255,255,0.85);
+      text-align: center;
+      line-height: 160%;
+      font-weight: 100;
+    }
+    .viewing-page-2 .back{
+      background: rgba(0, 0, 0, 0.25);
+      color: #FFF;
+      }
+    .main section.page3 {
+      background:url(gem1.png) no-repeat 100px -220px ;
+    }
+    .main section.page3 .page_container {
+      overflow: hidden;
+      width: 500px;
+      right: -285px;
+    }
+    .main section.page3 h1 {
+      text-align: left;
+      padding: 0;
+      margin-bottom: 0;
+      font-size: 70px;
+      letter-spacing: -1px;
+      color: rgb(225,213,96);
+    }
+    .main section.page3 h2 {
+      color:white;
+      text-align: left;
+      line-height: 160%;
+      font-weight: 100;
+      font-size: 21px;
+    }
+    body.disabled-onepage-scroll .onepage-wrapper  section {
+      min-height: 100%;
+      height: auto;
+    }
+    
+    body.disabled-onepage-scroll .main section .page_container, body.disabled-onepage-scroll .main section.page3 .page_container  {
+      padding: 20px;
+      margin-top: 150px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    
+    body.disabled-onepage-scroll  section .page_container h1{
+      text-align: center;
+      font-size: 50px;
+      width: 100%;
+    }
+    body.disabled-onepage-scroll section .page_container h2, body.disabled-onepage-scroll section .page_container .credit, body.disabled-onepage-scroll section .page_container .btns{
+      text-align: center;
+      width: 100%;
+    }
+    
+    body.disabled-onepage-scroll .main section.page1 > img {
+      position: absolute;
+      width: 80%;
+      left: 10%;
+    }
+    
+    body.disabled-onepage-scroll .main section > img {
+      position: relative;
+      max-width: 80%;
+      bottom: 0;
+    }
+    body.disabled-onepage-scroll code {
+      width: 95%;
+      margin: 0 auto 25px;
+      float: none;
+      overflow: hidden;
+    }
+    
+    body.disabled-onepage-scroll .main section.page3 .page_container {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      right: 0;
+    }
+    .main section.page1 h1 strong {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 16px;
+      padding: 10px 10px;
+      display: inline-block;
+      line-height: 140%;
+      background: #FFF;
+      border-radius: 3px;
+      position: relative;
+      top: -13px;
+      
+    }
+    
+    .text-btn {
+      display: block;
+      color: #000;
+      border-bottom: 2px dotted #000;
+      max-width: 300px;
+      margin: 30px auto 30px;
+      line-height: 200%;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 14px;
+    }
+	</style>
+</head>
+<body>
+    
+    <div class="wrapper">	
+	  <div class="main">
+	    
+      <section class="page1">
+        <div class="page_container">
+          <h1><!--<strong>Pure JS</strong>-->Culture Gems</h1>
+          <h2>Art heritage collectibles marketplace<!--<strong>No jQuery Required</strong>)--></h2>
+          <p class="credit">Culture Gems is a REVOLUTIONARY Blockchain-based platform that will allow art museums to offer UNIQUE, COLLECTIBLE, and TRADABLE DIGITAL tokens (Gems) of the items on their vast collection </p>
+          <div class="btns">
+            
+  	        <!--<a class="reload btn" href="https://github.com/peachananr/purejs-onepage-scroll">Download on Github</a>-->
+  	        <!--<a class="text-btn" href="http://www.thepetedesign.com/demos/onepage_scroll_demo.html">Looking for a jQuery version?</a>-->
+  	      </div>
+  	    </div>
+  	    <img src="gem2.png" alt="gem2">
+      </section>
+	    
+	    <section class="page2">
+	      <div class="page_container">
+          <h1>Auctions</h1>
+          <p>Gems will be offered on a continuous basis by a growing number of art museums. They will be offered both online and on premises. In singles and in closed packs. They will be the inalienable property of their collectors, with ownership secured, decentralized, immutable.</p>
+          <code class="html">
+  	        <p>*_[uCR}WM5t~VETo|0VH]%[*z<br>=EZD*97{9b:&bi}%9lsidk"_#<br>}/elIG_!Q3Z5l^3]t}97r[3.n<br>6G-AaIU>A{4k{c@JRVTBb_xu@<br></p>
+  	      </code>
+  	      <code class="js">
+            <img src="michaelangelo.png" alt="michaelangelo.png">
+	        </code>
+        </div>
+        <img src="gem2.png" alt="gem1.png">
+      </section>
+	    
+	    <section class="page3">
+	      <div class="page_container">
+          <h1>Direct additional income</h1>
+          <h2>Museums would benefit from a DIRECT additional income from activity ranging from 0.2M to 0.5M USD! </br>
+              Museums would benefit from renewed interest and attention in their collections and core activities, increasing revenues from their current admission and retails flows </br>
+            </h2>
+          <div class="btns">
+  	       <!-- <a class="reload btn" href="https://github.com/peachananr/purejs-onepage-scroll">Download on Github</a>-->
+  	      </div>
+  	    </div>
+      </section>
+      
+    </div>
+    <!----<a class="back" href=""><i class="fas fa-bars"></i></a>-->
+    
+  </div>
+  <script>
+	 onePageScroll(".main", {
+     sectionContainer: "section",
+     loop: true,
+     responsiveFallback: false
+   });
+		
+	</script>
+</body>
+</html>
